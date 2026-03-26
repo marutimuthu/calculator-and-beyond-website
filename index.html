@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator & Beyond — Smart Calculators for Real-World Decisions</title>
+  <meta name="description" content="80+ smart calculators for finance, health, fitness, travel, vehicle, electronics and more. Download Calculator & Beyond today." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0D0D14;
+      --surface:     #14131F;
+      --surface2:    #1A1829;
+      --gold:        #C9A96E;
+      --gold-dim:    rgba(201,169,110,0.15);
+      --gold-glow:   rgba(201,169,110,0.35);
+      --text:        #EDE8DF;
+      --muted:       #7A7596;
+      --faint:       #363445;
+      --shadow-dark: #050508;
+      --shadow-light:#1E1C2E;
+      --border:      #2A2840;
+      --green:       #34C97B;
+      --orange:      #FF6B35;
+      --cyan:        #00BCD4;
+      --purple:      #A090D9;
+      --teal:        #7FBC9C;
+      --red:         #974C3C;
+      --purple2:     #9B59B6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── Noise texture overlay ─────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Neumorphic card helpers ───────────────────── */
+    .neu-card {
+      background: var(--surface);
+      border-radius: 24px;
+      box-shadow:
+        6px 6px 16px var(--shadow-dark),
+        -4px -4px 12px var(--shadow-light);
+      border: 1px solid var(--border);
+    }
+
+    .neu-pill {
+      background: var(--surface);
+      border-radius: 40px;
+      box-shadow:
+        4px 4px 10px var(--shadow-dark),
+        -2px -2px 8px var(--shadow-light);
+    }
+
+    /* ── Nav ──────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(24px) saturate(1.2);
+      background: rgba(13,13,20,0.82);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 14px var(--gold-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .nav-logo-text {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo-text span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #0D0D14 !important;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      transition: box-shadow .2s, opacity .2s !important;
+      box-shadow: 0 0 16px var(--gold-glow);
+    }
+
+    .nav-cta:hover { opacity: 0.9; box-shadow: 0 0 28px var(--gold-glow) !important; }
+
+    /* ── Hero ─────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radial gold glow behind content */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,169,110,0.3);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #EDE8DF 0%, #C9A96E 60%, #E8D5A8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-tagline {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+
+    /* CTA buttons */
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 64px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #0D0D14;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 0 24px var(--gold-glow), 0 4px 14px rgba(0,0,0,0.5);
+      transition: transform .18s, box-shadow .18s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 36px var(--gold-glow), 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      box-shadow: 4px 4px 12px var(--shadow-dark), -2px -2px 8px var(--shadow-light);
+      transition: transform .18s, box-shadow .18s, border-color .18s;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+      box-shadow: 4px 4px 20px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 16px var(--gold-dim);
+    }
+
+    /* Phone mockup */
+    .phone-mockup {
+      position: relative;
+      width: 280px;
+      margin: 0 auto;
+    }
+
+    .phone-frame {
+      width: 280px;
+      height: 560px;
+      background: var(--surface);
+      border-radius: 44px;
+      border: 2px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(201,169,110,0.2),
+        0 40px 80px rgba(0,0,0,0.7),
+        0 0 60px rgba(201,169,110,0.12),
+        inset 0 0 0 1px var(--shadow-light);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Dynamic island notch */
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 28px;
+      background: #000;
+      border-radius: 14px;
+      z-index: 10;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 16px 16px;
+      overflow: hidden;
+    }
+
+    .screen-hero-anim {
+      width: 120px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--gold-dim), transparent);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin-bottom: 10px;
+      animation: floatAnim 3s ease-in-out infinite;
+    }
+
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .screen-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.3px;
+      margin-bottom: 2px;
+    }
+
+    .screen-sub {
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .screen-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .screen-card {
+      background: var(--surface);
+      border-radius: 14px;
+      padding: 12px 10px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 3px 3px 8px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+    }
+
+    .screen-card-icon { font-size: 20px; margin-bottom: 4px; }
+
+    .screen-card-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+
+    .screen-card-badge {
+      font-size: 8px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* Bottom tabs on phone */
+    .screen-tabs {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border-radius: 30px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+
+    .screen-tab {
+      width: 44px;
+      height: 36px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .screen-tab.active {
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    /* Floating stats */
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -1px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Section shared ───────────────────────────── */
+    section {
+      padding: 100px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* ── Categories ───────────────────────────────── */
+    .categories-section { padding-top: 40px; }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 56px;
+    }
+
+    .cat-card {
+      background: var(--surface);
+      border-radius: 22px;
+      padding: 28px 22px;
+      border: 1px solid var(--border);
+      box-shadow:
+        6px 6px 16px var(--shadow-dark),
+        -3px -3px 10px var(--shadow-light);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      cursor: default;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-color, var(--border));
+      box-shadow:
+        8px 8px 24px var(--shadow-dark),
+        -4px -4px 14px var(--shadow-light),
+        0 0 24px var(--accent-glow, transparent);
+    }
+
+    .cat-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 18px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      box-shadow: 3px 3px 8px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+    }
+
+    .cat-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .cat-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .cat-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    /* ── Features ─────────────────────────────────── */
+    .features-section {
+      padding: 80px 24px;
+    }
+
+    .features-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 3px 3px 8px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .feature-text h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .feature-text p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Second phone on features section */
+    .features-phone {
+      position: relative;
+    }
+
+    .features-phone-frame {
+      width: 240px;
+      height: 480px;
+      background: var(--surface);
+      border-radius: 38px;
+      border: 2px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(201,169,110,0.2),
+        0 30px 60px rgba(0,0,0,0.6),
+        0 0 50px rgba(201,169,110,0.1),
+        inset 0 0 0 1px var(--shadow-light);
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .fscreen {
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      padding: 44px 14px 14px;
+    }
+
+    .fscreen-header {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .fscreen-calc {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 4px 4px 10px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+      margin-bottom: 12px;
+    }
+
+    .fscreen-calc-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .fscreen-input {
+      background: #09090E;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      border: 1px solid var(--faint);
+    }
+
+    .fscreen-result {
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    .fscreen-result-val {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .fscreen-result-label {
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    /* Floating accent cards */
+    .float-card {
+      position: absolute;
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      box-shadow: 6px 6px 16px var(--shadow-dark), 0 0 20px rgba(201,169,110,0.1);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: floatSlow 4s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .float-card.card-1 { top: 60px; right: -30px; animation-delay: 0s; }
+    .float-card.card-2 { bottom: 120px; left: -30px; animation-delay: 1.5s; }
+
+    .float-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+
+    /* ── Testimonials / social proof ──────────────── */
+    .proof-section {
+      padding: 80px 24px;
+    }
+
+    .proof-row {
+      display: flex;
+      gap: 18px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .proof-card {
+      flex: 1;
+      min-width: 260px;
+      background: var(--surface);
+      border-radius: 22px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 6px 6px 16px var(--shadow-dark), -3px -3px 10px var(--shadow-light);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .proof-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .proof-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .proof-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      color: #0D0D14;
+      flex-shrink: 0;
+    }
+
+    .proof-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .proof-role {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── Download CTA band ────────────────────────── */
+    .download-section {
+      padding: 80px 24px 120px;
+    }
+
+    .download-card {
+      background: var(--surface);
+      border-radius: 32px;
+      padding: 60px 48px;
+      border: 1px solid var(--border);
+      box-shadow:
+        8px 8px 24px var(--shadow-dark),
+        -4px -4px 16px var(--shadow-light),
+        0 0 60px rgba(201,169,110,0.08);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 300px;
+      background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .download-card h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #EDE8DF 0%, #C9A96E 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .download-card p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .store-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #111018;
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 4px 4px 12px var(--shadow-dark), -2px -2px 8px var(--shadow-light);
+      transition: transform .18s, border-color .18s, box-shadow .18s;
+    }
+
+    .store-btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+      box-shadow: 4px 4px 18px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 20px var(--gold-dim);
+    }
+
+    .store-btn-icon { font-size: 26px; }
+
+    .store-btn-text {
+      text-align: left;
+    }
+
+    .store-btn-sub {
+      font-size: 10px;
+      color: var(--muted);
+      display: block;
+    }
+
+    .store-btn-name {
+      font-size: 15px;
+      font-weight: 700;
+      display: block;
+    }
+
+    /* ── Footer ───────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .footer-brand span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--muted);
+      transition: color .2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--faint);
+      width: 100%;
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+    }
+
+    /* ── Divider ornament ─────────────────────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── Responsive ───────────────────────────────── */
+    @media (max-width: 768px) {
+      nav .nav-links { display: none; }
+
+      .features-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .features-phone { order: -1; }
+
+      .float-card.card-1 { right: 10px; }
+      .float-card.card-2 { left: 10px; }
+
+      .download-card { padding: 40px 24px; }
+
+      footer { flex-direction: column; align-items: flex-start; }
+
+      .hero-stats { gap: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .categories-grid { grid-template-columns: 1fr 1fr; }
+      .cat-desc { display: none; }
+    }
+
+    /* ── Scroll-in animations ─────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+    .reveal-delay-7 { transition-delay: 0.7s; }
+    .reveal-delay-8 { transition-delay: 0.8s; }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">🧮</div>
+    <span class="nav-logo-text">Calculator <span>&amp; Beyond</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#download" class="nav-cta">Download</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Now available on iOS &amp; Android
+  </div>
+
+  <h1>Smart Calculators<br/>for Real Life</h1>
+
+  <p class="hero-tagline">
+    80+ precision calculators across finance, health, fitness, travel, vehicle, electronics and more — all in one beautifully crafted app.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#download" class="btn-primary">
+      <span>🍎</span> App Store
+    </a>
+    <a href="#download" class="btn-secondary">
+      <span>▶</span> Google Play
+    </a>
+  </div>
+
+  <!-- Phone mockup -->
+  <div class="phone-mockup">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="screen-hero-anim">💰</div>
+        <div class="screen-title">Calculator &amp; Beyond</div>
+        <div class="screen-sub">Smart calculators for real-world decisions!</div>
+        <div class="screen-grid">
+          <div class="screen-card">
+            <div class="screen-card-icon">📈</div>
+            <span class="screen-card-label">Finance</span>
+            <div class="screen-card-badge">18 calcs</div>
+          </div>
+          <div class="screen-card">
+            <div class="screen-card-icon">❤️</div>
+            <span class="screen-card-label">Health</span>
+            <div class="screen-card-badge">5 calcs</div>
+          </div>
+          <div class="screen-card">
+            <div class="screen-card-icon">🏋️</div>
+            <span class="screen-card-label">Fitness</span>
+            <div class="screen-card-badge">6 calcs</div>
+          </div>
+          <div class="screen-card">
+            <div class="screen-card-icon">✈️</div>
+            <span class="screen-card-label">Travel</span>
+            <div class="screen-card-badge">8 calcs</div>
+          </div>
+        </div>
+        <div class="screen-tabs">
+          <div class="screen-tab active">🏠</div>
+          <div class="screen-tab">🧮</div>
+          <div class="screen-tab">🔖</div>
+          <div class="screen-tab">⚙️</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">80+</div>
+      <div class="stat-label">Calculators</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">8</div>
+      <div class="stat-label">Categories</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Ads · Free</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">⭐⭐⭐⭐⭐</div>
+      <div class="stat-label">Rated</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── Categories ────────────────────────────────────── -->
+<section id="categories" class="categories-section">
+  <div class="section-label">What's inside</div>
+  <h2 class="section-title reveal">8 Categories.<br/>Every calculation you need.</h2>
+  <p class="section-desc reveal reveal-delay-1">From compound interest to calorie burn — each category is packed with precision tools built for real decisions.</p>
+
+  <div class="categories-grid">
+    <div class="cat-card reveal reveal-delay-1" style="--accent-color:#C9A96E; --accent-glow:rgba(201,169,110,0.15)">
+      <div class="cat-icon-wrap">📈</div>
+      <div class="cat-name">Finance</div>
+      <div class="cat-desc">Compound interest, mortgages, loans, ROI, retirement planning and more.</div>
+      <span class="cat-badge" style="background:rgba(201,169,110,0.12);color:#C9A96E">18 calculators</span>
+    </div>
+    <div class="cat-card reveal reveal-delay-2" style="--accent-color:#34C97B; --accent-glow:rgba(52,201,123,0.12)">
+      <div class="cat-icon-wrap">❤️</div>
+      <div class="cat-name">Health</div>
+      <div class="cat-desc">BMI, body fat, ideal weight, TDEE, and daily water intake.</div>
+      <span class="cat-badge" style="background:rgba(52,201,123,0.12);color:#34C97B">5 calculators</span>
+    </div>
+    <div class="cat-card reveal reveal-delay-3" style="--accent-color:#FF6B35; --accent-glow:rgba(255,107,53,0.12)">
+      <div class="cat-icon-wrap">🏋️</div>
+      <div class="cat-name">Fitness</div>
+      <div class="cat-desc">1RM, calories burned, macros, running pace, heart rate zones, and sleep cycles.</div>
+      <span class="cat-badge" style="background:rgba(255,107,53,0.12);color:#FF6B35">6 calculators</span>
+    </div>
+    <div class="cat-card reveal reveal-delay-4" style="--accent-color:#00BCD4; --accent-glow:rgba(0,188,212,0.12)">
+      <div class="cat-icon-wrap">✈️</div>
+      <div class="cat-name">Travel</div>
+      <div class="cat-desc">Trip budget, hotel cost, road trip fuel, tip calculator, foreign exchange and more.</div>
+      <span class="cat-badge" style="background:rgba(0,188,212,0.12);color:#00BCD4">8 calculators</span>
+    </div>
+    <div class="cat-card reveal reveal-delay-5" style="--accent-color:#C1846A; --accent-glow:rgba(151,76,60,0.12)">
+      <div class="cat-icon-wrap">🚗</div>
+      <div class="cat-name">Vehicle</div>
+      <div class="cat-desc">Fuel cost, depreciation, gear ratio, tyre life, stopping distance and more.</div>
+      <span class="cat-badge" style="background:rgba(151,76,60,0.15);color:#C1846A">9 calculators</span>
+    </div>
+    <div class="cat-card reveal reveal-delay-6" style="--accent-color:#A090D9; --accent-glow:rgba(160,144,217,0.12)">
+      <div class="cat-icon-wrap">⚡</div>
+      <div class="cat-name">Electronics</div>
+      <div class="cat-desc">Ohm's law, resistor color codes, voltage divider, RC circuits, LED resistor.</div>
+      <span class="cat-badge" style="background:rgba(160,144,217,0.12);color:#A090D9">5 calculators</span>
+    </div>
+    <div class="cat-card reveal reveal-delay-7" style="--accent-color:#9B59B6; --accent-glow:rgba(155,89,182,0.12)">
+      <div class="cat-icon-wrap">🌐</div>
+      <div class="cat-name">Networking</div>
+      <div class="cat-desc">IP subnet, data transfer rate, and network speed calculators.</div>
+      <span class="cat-badge" style="background:rgba(155,89,182,0.12);color:#9B59B6">3 calculators</span>
+    </div>
+    <div class="cat-card reveal reveal-delay-8" style="--accent-color:#7FBC9C; --accent-glow:rgba(127,188,156,0.12)">
+      <div class="cat-icon-wrap">💻</div>
+      <div class="cat-name">Software</div>
+      <div class="cat-desc">Bitwise operations, color codes, number base conversions, Unix timestamps.</div>
+      <span class="cat-badge" style="background:rgba(127,188,156,0.12);color:#7FBC9C">4 calculators</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Features ──────────────────────────────────────── -->
+<section id="features">
+  <div class="section-label">Why you'll love it</div>
+  <h2 class="section-title reveal">Designed with care.<br/>Built to last.</h2>
+
+  <div class="features-layout">
+    <div class="features-list">
+      <div class="feature-item reveal reveal-delay-1">
+        <div class="feature-icon">🌙</div>
+        <div class="feature-text">
+          <h3>Neumorphic Dark &amp; Light</h3>
+          <p>A stunning obsidian &amp; gold design system — silky smooth in both dark and light mode.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-2">
+        <div class="feature-icon">🔖</div>
+        <div class="feature-text">
+          <h3>Save &amp; Bookmark Results</h3>
+          <p>Pin any calculation result for later. Never lose an important number again.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-3">
+        <div class="feature-icon">⭐</div>
+        <div class="feature-text">
+          <h3>Favourites</h3>
+          <p>Star your most-used calculators and access them instantly from the home screen.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-4">
+        <div class="feature-icon">💡</div>
+        <div class="feature-text">
+          <h3>Daily Financial Facts</h3>
+          <p>Start every day with an interesting financial or wellness insight to sharpen your knowledge.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-5">
+        <div class="feature-icon">🧮</div>
+        <div class="feature-text">
+          <h3>Built-in Standard Calculator</h3>
+          <p>A full standard &amp; scientific calculator is always one tap away from the home screen.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-6">
+        <div class="feature-icon">📱</div>
+        <div class="feature-text">
+          <h3>Works Offline, Always</h3>
+          <p>No internet required. Every calculation happens on-device, instantly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="features-phone reveal reveal-delay-2">
+      <!-- Floating context cards -->
+      <div class="float-card card-1">
+        <span class="float-dot" style="background:#34C97B"></span>
+        Result saved ✓
+      </div>
+      <div class="float-card card-2">
+        <span class="float-dot" style="background:#C9A96E"></span>
+        ⭐ Added to Favourites
+      </div>
+
+      <div class="features-phone-frame">
+        <div class="fscreen">
+          <div class="fscreen-header">Finance › Compound Interest</div>
+          <div class="fscreen-calc">
+            <div class="fscreen-calc-title">Compound Interest Calculator</div>
+            <div class="fscreen-input">Principal: $10,000</div>
+            <div class="fscreen-input">Rate: 7% / yr</div>
+            <div class="fscreen-input">Period: 20 years</div>
+            <div class="fscreen-result">
+              <div class="fscreen-result-val">$38,696.84</div>
+              <div class="fscreen-result-label">Future Value</div>
+            </div>
+          </div>
+          <div class="fscreen-calc" style="padding:12px">
+            <div style="font-size:10px; color:var(--muted); margin-bottom:8px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;">Growth Breakdown</div>
+            <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text); margin-bottom:6px;">
+              <span>Principal</span><span style="color:var(--gold)">$10,000</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text);">
+              <span>Interest Earned</span><span style="color:#34C97B">$28,696.84</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Reviews ───────────────────────────────────────── -->
+<section id="reviews" class="proof-section">
+  <div class="section-label">App Store Reviews</div>
+  <h2 class="section-title reveal">Loved by users</h2>
+
+  <div class="proof-row">
+    <div class="proof-card reveal reveal-delay-1">
+      <div class="stars">★★★★★</div>
+      <p class="proof-text">"Finally an app that has every calculator I need in one place. The compound interest and mortgage tools are spot on. Clean, fast, no ads."</p>
+      <div class="proof-author">
+        <div class="proof-avatar">AK</div>
+        <div>
+          <div class="proof-name">Arjun K.</div>
+          <div class="proof-role">Finance Professional</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-card reveal reveal-delay-2">
+      <div class="stars">★★★★★</div>
+      <p class="proof-text">"The fitness calculators are incredibly accurate. I use the macro split and heart rate zone tool every single day. The dark theme is stunning."</p>
+      <div class="proof-author">
+        <div class="proof-avatar">SM</div>
+        <div>
+          <div class="proof-name">Sarah M.</div>
+          <div class="proof-role">Personal Trainer</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-card reveal reveal-delay-3">
+      <div class="stars">★★★★★</div>
+      <p class="proof-text">"I'm an EE student and the electronics section is a lifesaver — Ohm's law, voltage divider, RC circuit all in one app. Best purchase I've made."</p>
+      <div class="proof-author">
+        <div class="proof-avatar">TR</div>
+        <div>
+          <div class="proof-name">Tom R.</div>
+          <div class="proof-role">Electrical Engineering Student</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Download CTA ──────────────────────────────────── -->
+<section id="download" class="download-section">
+  <div class="download-card reveal">
+    <div class="section-label" style="text-align:center">Get the app</div>
+    <h2>Your calculator.<br/>Everywhere you go.</h2>
+    <p>Download Calculator &amp; Beyond free today. Available on iPhone and Android.</p>
+
+    <div class="store-buttons">
+      <a href="#" class="store-btn">
+        <span class="store-btn-icon">🍎</span>
+        <span class="store-btn-text">
+          <span class="store-btn-sub">Download on the</span>
+          <span class="store-btn-name">App Store</span>
+        </span>
+      </a>
+      <a href="#" class="store-btn">
+        <span class="store-btn-icon">▶</span>
+        <span class="store-btn-text">
+          <span class="store-btn-sub">Get it on</span>
+          <span class="store-btn-name">Google Play</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">Calculator <span>&amp; Beyond</span></div>
+  <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Disclaimer</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="footer-copy">
+    © 2025 Calculator &amp; Beyond. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
