@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
   <style>
     /* ── Reset & Base ─────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -374,7 +377,7 @@
       box-shadow: 3px 3px 8px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
     }
 
-    .screen-card-icon { font-size: 20px; margin-bottom: 4px; }
+    .screen-card-icon { font-size: 18px; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; height: 22px; }
 
     .screen-card-label {
       font-size: 9px;
@@ -778,7 +781,7 @@
 
     /* ── Download CTA band ────────────────────────── */
     .download-section {
-      padding: 80px 24px 120px;
+      padding: 80px 24px 60px;
     }
 
     .download-card {
@@ -875,7 +878,7 @@
 
     /* ── Footer ───────────────────────────────────── */
     footer {
-      border-top: 1px solid var(--border);
+      /* border-top: 1px solid var(--border); */
       padding: 40px 24px;
       display: flex;
       align-items: center;
@@ -980,6 +983,7 @@
 <!-- ── Nav ──────────────────────────────────────────── -->
 <nav>
   <a class="nav-logo" href="#">
+    <div class="nav-logo-icon"><i class="fa-solid fa-calculator" style="font-size:16px;color:var(--gold)"></i></div>
     <span class="nav-logo-text">Calculator <span>&amp; Beyond</span></span>
   </a>
   <ul class="nav-links">
@@ -1000,7 +1004,7 @@
   <h1>Smart Calculators<br/>for Real Life</h1>
 
   <p class="hero-tagline">
-    60+ calculators across finance, health, fitness, travel, vehicle, electronics and more — all in one beautifully crafted app.
+    60+ calculators across finance, health, fitness, travel, vehicle, electronics and more. <br><br> All in one beautifully crafted app.
   </p>
 
   <div class="hero-ctas">
@@ -1019,36 +1023,36 @@
     <div class="phone-frame">
       <div class="phone-notch"></div>
       <div class="phone-screen">
-        <div class="screen-hero-anim">💰</div>
+        <div class="screen-hero-anim"><i class="fa-solid fa-calculator" style="font-size:30px;color:var(--gold)"></i></div>
         <div class="screen-title">Calculator &amp; Beyond</div>
         <div class="screen-sub">Smart calculators for real-world decisions!</div>
         <div class="screen-grid">
           <div class="screen-card">
-            <div class="screen-card-icon">📈</div>
+            <div class="screen-card-icon"><i class="fa-solid fa-line-chart" style="color:#C9A96E"></i></div>
             <span class="screen-card-label">Finance</span>
             <div class="screen-card-badge">18 calcs</div>
           </div>
           <div class="screen-card">
-            <div class="screen-card-icon">❤️</div>
+            <div class="screen-card-icon"><i class="fa-solid fa-heartbeat" style="color:#34C97B"></i></div>
             <span class="screen-card-label">Health</span>
             <div class="screen-card-badge">5 calcs</div>
           </div>
           <div class="screen-card">
-            <div class="screen-card-icon">🏋️</div>
+            <div class="screen-card-icon"><i class="fa-solid fa-dumbbell" style="color:#FF6B35"></i></div>
             <span class="screen-card-label">Fitness</span>
             <div class="screen-card-badge">6 calcs</div>
           </div>
           <div class="screen-card">
-            <div class="screen-card-icon">✈️</div>
+            <div class="screen-card-icon"><i class="fa-solid fa-plane" style="color:#00BCD4"></i></div>
             <span class="screen-card-label">Travel</span>
             <div class="screen-card-badge">8 calcs</div>
           </div>
         </div>
         <div class="screen-tabs">
-          <div class="screen-tab active">🏠</div>
-          <div class="screen-tab">🧮</div>
-          <div class="screen-tab">🔖</div>
-          <div class="screen-tab">⚙️</div>
+          <div class="screen-tab active"><i class="fa-solid fa-house" style="font-size:12px"></i></div>
+          <div class="screen-tab"><i class="fa-solid fa-calculator" style="font-size:12px"></i></div>
+          <div class="screen-tab"><i class="fa-solid fa-bookmark" style="font-size:12px"></i></div>
+          <div class="screen-tab"><i class="fa-solid fa-gear" style="font-size:12px"></i></div>
         </div>
       </div>
     </div>
@@ -1068,7 +1072,7 @@
       <div class="stat-label">Ads · Free</div>
     </div>
     <!-- <div class="stat">
-      <div class="stat-number">⭐⭐⭐⭐⭐</div>
+      <div class="stat-number" style="color:var(--gold);letter-spacing:2px"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
       <div class="stat-label">Rated</div>
     </div> -->
   </div>
@@ -1080,53 +1084,53 @@
 <section id="categories" class="categories-section">
   <div class="section-label">What's inside</div>
   <h2 class="section-title reveal">8 Categories.<br/>Every calculation you need.</h2>
-  <p class="section-desc reveal reveal-delay-1">From compound interest to calorie burn — each category is packed with precision tools built for real decisions.</p>
+  <p class="section-desc reveal reveal-delay-1">From compound interest to calorie burn, each category is packed with precision tools built for real decisions.</p>
 
   <div class="categories-grid">
     <div class="cat-card reveal reveal-delay-1" style="--accent-color:#C9A96E; --accent-glow:rgba(201,169,110,0.15)">
-      <div class="cat-icon-wrap">📈</div>
+      <div class="cat-icon-wrap"><i class="fa-solid fa-line-chart" style="color:#C9A96E;font-size:22px"></i></div>
       <div class="cat-name">Finance</div>
       <div class="cat-desc">Compound interest, mortgages, loans, ROI, retirement planning and more.</div>
       <span class="cat-badge" style="background:rgba(201,169,110,0.12);color:#C9A96E">18 calculators</span>
     </div>
     <div class="cat-card reveal reveal-delay-2" style="--accent-color:#34C97B; --accent-glow:rgba(52,201,123,0.12)">
-      <div class="cat-icon-wrap">❤️</div>
+      <div class="cat-icon-wrap"><i class="fa-solid fa-heart-pulse" style="color:#34C97B;font-size:22px"></i></div>
       <div class="cat-name">Health</div>
       <div class="cat-desc">BMI, body fat, ideal weight, TDEE, and daily water intake.</div>
       <span class="cat-badge" style="background:rgba(52,201,123,0.12);color:#34C97B">5 calculators</span>
     </div>
     <div class="cat-card reveal reveal-delay-3" style="--accent-color:#FF6B35; --accent-glow:rgba(255,107,53,0.12)">
-      <div class="cat-icon-wrap">🏋️</div>
+      <div class="cat-icon-wrap"><i class="fa-solid fa-dumbbell" style="color:#FF6B35;font-size:22px"></i></div>
       <div class="cat-name">Fitness</div>
       <div class="cat-desc">1RM, calories burned, macros, running pace, heart rate zones, and sleep cycles.</div>
       <span class="cat-badge" style="background:rgba(255,107,53,0.12);color:#FF6B35">6 calculators</span>
     </div>
     <div class="cat-card reveal reveal-delay-4" style="--accent-color:#00BCD4; --accent-glow:rgba(0,188,212,0.12)">
-      <div class="cat-icon-wrap">✈️</div>
+      <div class="cat-icon-wrap"><i class="fa-solid fa-plane" style="color:#00BCD4;font-size:22px"></i></div>
       <div class="cat-name">Travel</div>
       <div class="cat-desc">Trip budget, hotel cost, road trip fuel, tip calculator, foreign exchange and more.</div>
       <span class="cat-badge" style="background:rgba(0,188,212,0.12);color:#00BCD4">8 calculators</span>
     </div>
     <div class="cat-card reveal reveal-delay-5" style="--accent-color:#C1846A; --accent-glow:rgba(151,76,60,0.12)">
-      <div class="cat-icon-wrap">🚗</div>
+      <div class="cat-icon-wrap"><i class="fa-solid fa-car" style="color:#C1846A;font-size:22px"></i></div>
       <div class="cat-name">Vehicle</div>
       <div class="cat-desc">Fuel cost, depreciation, gear ratio, tyre life, stopping distance and more.</div>
       <span class="cat-badge" style="background:rgba(151,76,60,0.15);color:#C1846A">9 calculators</span>
     </div>
     <div class="cat-card reveal reveal-delay-6" style="--accent-color:#A090D9; --accent-glow:rgba(160,144,217,0.12)">
-      <div class="cat-icon-wrap">⚡</div>
+      <div class="cat-icon-wrap"><i class="fa-solid fa-bolt" style="color:#A090D9;font-size:22px"></i></div>
       <div class="cat-name">Electronics</div>
       <div class="cat-desc">Ohm's law, resistor color codes, voltage divider, RC circuits, LED resistor.</div>
       <span class="cat-badge" style="background:rgba(160,144,217,0.12);color:#A090D9">5 calculators</span>
     </div>
     <div class="cat-card reveal reveal-delay-7" style="--accent-color:#9B59B6; --accent-glow:rgba(155,89,182,0.12)">
-      <div class="cat-icon-wrap">🌐</div>
+      <div class="cat-icon-wrap"><i class="fa-solid fa-network-wired" style="color:#9B59B6;font-size:22px"></i></div>
       <div class="cat-name">Networking</div>
       <div class="cat-desc">IP subnet, data transfer rate, and network speed calculators.</div>
       <span class="cat-badge" style="background:rgba(155,89,182,0.12);color:#9B59B6">3 calculators</span>
     </div>
     <div class="cat-card reveal reveal-delay-8" style="--accent-color:#7FBC9C; --accent-glow:rgba(127,188,156,0.12)">
-      <div class="cat-icon-wrap">💻</div>
+      <div class="cat-icon-wrap"><i class="fa-solid fa-code" style="color:#7FBC9C;font-size:22px"></i></div>
       <div class="cat-name">Software</div>
       <div class="cat-desc">Bitwise operations, color codes, number base conversions, Unix timestamps.</div>
       <span class="cat-badge" style="background:rgba(127,188,156,0.12);color:#7FBC9C">4 calculators</span>
@@ -1144,42 +1148,42 @@
   <div class="features-layout">
     <div class="features-list">
       <div class="feature-item reveal reveal-delay-1">
-        <div class="feature-icon">🌙</div>
+        <div class="feature-icon"><i class="fa-solid fa-moon" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Neumorphic Dark &amp; Light</h3>
-          <p>A stunning obsidian &amp; gold design system — silky smooth in both dark and light mode.</p>
+          <p>A stunning obsidian &amp; gold design system, silky smooth in both dark and light mode.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-2">
-        <div class="feature-icon">🔖</div>
+        <div class="feature-icon"><i class="fa-solid fa-bookmark" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Save &amp; Bookmark Results</h3>
           <p>Pin any calculation result for later. Never lose an important number again.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-3">
-        <div class="feature-icon">⭐</div>
+        <div class="feature-icon"><i class="fa-solid fa-star" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Favourites</h3>
           <p>Star your most-used calculators and access them instantly from the home screen.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-4">
-        <div class="feature-icon">💡</div>
+        <div class="feature-icon"><i class="fa-solid fa-lightbulb" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Daily Financial Facts</h3>
           <p>Start every day with an interesting financial or wellness insight to sharpen your knowledge.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-5">
-        <div class="feature-icon">🧮</div>
+        <div class="feature-icon"><i class="fa-solid fa-calculator" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Built-in Standard Calculator</h3>
           <p>A full standard &amp; scientific calculator is always one tap away from the home screen.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-6">
-        <div class="feature-icon">📱</div>
+        <div class="feature-icon"><i class="fa-solid fa-mobile-screen" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Works Offline, Always</h3>
           <p>No internet required. Every calculation happens on-device, instantly.</p>
@@ -1195,7 +1199,7 @@
       </div>
       <div class="float-card card-2">
         <span class="float-dot" style="background:#C9A96E"></span>
-        ⭐ Added to Favourites
+        <i class="fa-solid fa-star" style="color:var(--gold)"></i> Added to Favourites
       </div>
 
       <div class="features-phone-frame">
@@ -1304,12 +1308,12 @@
 
 <!-- ── Footer ────────────────────────────────────────── -->
 <footer>
-  <div class="footer-brand">Calculator <span>&amp; Beyond</span></div>
-  <ul class="footer-links">
+  <!-- <div class="footer-brand">Calculator <span>&amp; Beyond</span></div> -->
+  <!-- <ul class="footer-links">
     <li><a href="#">Privacy Policy</a></li>
     <li><a href="#">Disclaimer</a></li>
     <li><a href="#">Contact</a></li>
-  </ul>
+  </ul> -->
   <div class="footer-copy">
     © 2025 Calculator &amp; Beyond. All rights reserved.
   </div>
