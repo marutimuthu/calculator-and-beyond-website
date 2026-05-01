@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calculator & Beyond: Smart Calculators for Real-World Decisions</title>
-  <meta name="description" content="60+ smart calculators for finance, health, fitness, travel, vehicle, electronics and more. Download Calculator & Beyond today." />
+  <meta name="description" content="106+ smart calculators for finance, health, fitness, travel, vehicle, electronics and more. Dashboard, habit tracking, streaks and daily insights. Download free." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,13 +31,12 @@
       --shadow-dark: #050508;
       --shadow-light:#1E1C2E;
       --border:      #2A2840;
-      --green:       #34C97B;
+      --green:       #27AE60;
       --orange:      #FF6B35;
       --cyan:        #00BCD4;
-      --purple:      #A090D9;
+      --purple:      #9B59B6;
       --teal:        #7FBC9C;
       --red:         #974C3C;
-      --purple2:     #9B59B6;
     }
 
     html { scroll-behavior: smooth; }
@@ -50,7 +49,6 @@
       line-height: 1.6;
     }
 
-    /* ── Noise texture overlay ─────────────────────── */
     body::before {
       content: '';
       position: fixed;
@@ -58,24 +56,6 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 0;
-    }
-
-    /* ── Neumorphic card helpers ───────────────────── */
-    .neu-card {
-      background: var(--surface);
-      border-radius: 24px;
-      box-shadow:
-        6px 6px 16px var(--shadow-dark),
-        -4px -4px 12px var(--shadow-light);
-      border: 1px solid var(--border);
-    }
-
-    .neu-pill {
-      background: var(--surface);
-      border-radius: 40px;
-      box-shadow:
-        4px 4px 10px var(--shadow-dark),
-        -2px -2px 8px var(--shadow-light);
     }
 
     /* ── Nav ──────────────────────────────────────── */
@@ -100,874 +80,380 @@
     }
 
     .nav-logo-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--surface2); border: 1px solid var(--border);
       box-shadow: 0 0 14px var(--gold-glow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
     }
 
-    .nav-logo-text {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.3px;
-    }
-
+    .nav-logo-text { font-size: 15px; font-weight: 800; color: var(--text); letter-spacing: -0.3px; }
     .nav-logo-text span { color: var(--gold); }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color .2s;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--gold); }
 
     .nav-cta {
-      background: var(--gold);
-      color: #0D0D14 !important;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-weight: 700 !important;
-      font-size: 13px !important;
+      background: var(--gold); color: #0D0D14 !important;
+      padding: 8px 18px; border-radius: 20px;
+      font-weight: 700 !important; font-size: 13px !important;
       transition: box-shadow .2s, opacity .2s !important;
       box-shadow: 0 0 16px var(--gold-glow);
     }
-
     .nav-cta:hover { opacity: 0.9; box-shadow: 0 0 28px var(--gold-glow) !important; }
 
     /* ── Hero ─────────────────────────────────────── */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center;
       padding: 120px 24px 80px;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
 
-    /* Radial gold glow behind content */
     .hero::after {
-      content: '';
-      position: absolute;
-      top: 15%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
+      content: ''; position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px;
       background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
+      pointer-events: none; z-index: 0;
     }
 
     .hero > * { position: relative; z-index: 1; }
 
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--gold-dim);
-      border: 1px solid rgba(201,169,110,0.3);
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 28px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--gold-dim); border: 1px solid rgba(201,169,110,0.3);
+      color: var(--gold); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 28px;
     }
 
     .hero-badge .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      animation: pulse 2s ease-in-out infinite;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); animation: pulse 2s ease-in-out infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
 
     .hero h1 {
-      font-size: clamp(42px, 7vw, 80px);
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.05;
-      margin-bottom: 20px;
+      font-size: clamp(42px, 7vw, 80px); font-weight: 900;
+      letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px;
       background: linear-gradient(135deg, #EDE8DF 0%, #C9A96E 60%, #E8D5A8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
     .hero-tagline {
-      font-size: clamp(16px, 2.2vw, 20px);
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 40px;
-      font-weight: 400;
+      font-size: clamp(16px, 2.2vw, 20px); color: var(--muted);
+      max-width: 560px; margin: 0 auto 40px; font-weight: 400;
     }
 
-    /* CTA buttons */
     .hero-ctas {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 64px;
-    }
-
-    .btn-primary svg, .btn-secondary svg {
-      display: block;
+      display: flex; gap: 14px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 64px;
     }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--gold);
-      color: #0D0D14;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 14px;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: #0D0D14; font-size: 15px; font-weight: 700;
+      padding: 14px 28px; border-radius: 14px; text-decoration: none;
       box-shadow: 0 0 24px var(--gold-glow), 0 4px 14px rgba(0,0,0,0.5);
       transition: transform .18s, box-shadow .18s;
     }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 36px var(--gold-glow), 0 8px 20px rgba(0,0,0,0.5);
-    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 36px var(--gold-glow), 0 8px 20px rgba(0,0,0,0.5); }
 
     .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface);
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 14px;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface); color: var(--text); font-size: 15px; font-weight: 600;
+      padding: 14px 28px; border-radius: 14px; text-decoration: none;
       border: 1px solid var(--border);
       box-shadow: 4px 4px 12px var(--shadow-dark), -2px -2px 8px var(--shadow-light);
       transition: transform .18s, box-shadow .18s, border-color .18s;
     }
+    .btn-secondary:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 4px 4px 20px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 16px var(--gold-dim); }
 
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: var(--gold);
-      box-shadow: 4px 4px 20px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 16px var(--gold-dim);
-    }
-
-    /* Phone mockup */
-    .phone-mockup {
-      position: relative;
-      width: 280px;
-      margin: 0 auto;
-    }
-
-    .phone-frame {
-      width: 280px;
-      height: 560px;
-      background: var(--surface);
-      border-radius: 44px;
-      border: 2px solid var(--border);
-      box-shadow:
-        0 0 0 1px rgba(201,169,110,0.2),
-        0 40px 80px rgba(0,0,0,0.7),
-        0 0 60px rgba(201,169,110,0.12),
-        inset 0 0 0 1px var(--shadow-light);
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Dynamic island notch */
-    .phone-notch {
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 28px;
-      background: #000;
-      border-radius: 14px;
-      z-index: 10;
-    }
-
-    .phone-screen {
-      width: 100%;
-      height: 100%;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 56px 16px 16px;
-      overflow: hidden;
-    }
-
-    .screen-hero-anim {
-      width: 120px;
-      height: 70px;
-      background: linear-gradient(135deg, var(--gold-dim), transparent);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      margin-bottom: 10px;
-      animation: floatAnim 3s ease-in-out infinite;
-    }
-
-    @keyframes floatAnim {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    .screen-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.3px;
-      margin-bottom: 2px;
-    }
-
-    .screen-sub {
-      font-size: 10px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .screen-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      width: 100%;
-    }
-
-    .screen-card {
-      background: var(--surface);
-      border-radius: 14px;
-      padding: 12px 10px;
-      text-align: center;
-      border: 1px solid var(--border);
-      box-shadow: 3px 3px 8px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
-    }
-
-    .screen-card-icon { font-size: 18px; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; height: 22px; }
-
-    .screen-card-label {
-      font-size: 9px;
-      font-weight: 700;
-      color: var(--text);
-      display: block;
-    }
-
-    .screen-card-badge {
-      font-size: 8px;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    /* Bottom tabs on phone */
-    .screen-tabs {
-      position: absolute;
-      bottom: 12px;
-      display: flex;
-      gap: 4px;
-      background: var(--surface);
-      border-radius: 30px;
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-    }
-
-    .screen-tab {
-      width: 44px;
-      height: 36px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .screen-tab.active {
-      background: var(--gold-dim);
-      color: var(--gold);
-    }
-
-    /* Floating stats */
-    .hero-stats {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 48px;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 28px;
-      font-weight: 900;
-      color: var(--gold);
-      letter-spacing: -1px;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+    .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; margin-top: 48px; }
+    .stat { text-align: center; }
+    .stat-number { font-size: 28px; font-weight: 900; color: var(--gold); letter-spacing: -1px; }
+    .stat-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 
     /* ── Section shared ───────────────────────────── */
-    section {
-      padding: 100px 24px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
 
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
 
-    .section-title {
-      font-size: clamp(30px, 4.5vw, 52px);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
+    .section-title { font-size: clamp(30px, 4.5vw, 52px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px; }
 
-    .section-desc {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 540px;
-      line-height: 1.7;
-    }
+    .section-desc { font-size: 17px; color: var(--muted); max-width: 540px; line-height: 1.7; }
 
     /* ── Categories ───────────────────────────────── */
     .categories-section { padding-top: 40px; }
 
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 56px;
-    }
+    .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; margin-top: 56px; }
 
     .cat-card {
-      background: var(--surface);
-      border-radius: 22px;
-      padding: 28px 22px;
+      background: var(--surface); border-radius: 22px; padding: 28px 22px;
       border: 1px solid var(--border);
-      box-shadow:
-        6px 6px 16px var(--shadow-dark),
-        -3px -3px 10px var(--shadow-light);
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-      cursor: default;
+      box-shadow: 6px 6px 16px var(--shadow-dark), -3px -3px 10px var(--shadow-light);
+      transition: transform .2s, box-shadow .2s, border-color .2s; cursor: default;
     }
-
     .cat-card:hover {
       transform: translateY(-4px);
       border-color: var(--accent-color, var(--border));
-      box-shadow:
-        8px 8px 24px var(--shadow-dark),
-        -4px -4px 14px var(--shadow-light),
-        0 0 24px var(--accent-glow, transparent);
+      box-shadow: 8px 8px 24px var(--shadow-dark), -4px -4px 14px var(--shadow-light), 0 0 24px var(--accent-glow, transparent);
     }
 
     .cat-icon-wrap {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      margin-bottom: 18px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
+      width: 56px; height: 56px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; font-size: 26px;
+      margin-bottom: 18px; background: var(--surface2); border: 1px solid var(--border);
       box-shadow: 3px 3px 8px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
     }
 
-    .cat-name {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
+    .cat-name { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .cat-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+    .cat-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 12px; }
 
-    .cat-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
+    /* ── Dashboard & Tracks section ───────────────── */
+    .new-features-section { padding: 80px 24px; }
 
-    .cat-badge {
-      display: inline-flex;
-      align-items: center;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 12px;
-    }
-
-    /* ── Features ─────────────────────────────────── */
-    .features-section {
-      padding: 80px 24px;
-    }
-
-    .features-layout {
+    .new-features-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 60px;
+      gap: 24px;
+      margin-top: 56px;
     }
 
-    .features-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .feature-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 13px;
-      background: var(--surface);
+    .nf-card {
+      background: var(--surface); border-radius: 28px;
       border: 1px solid var(--border);
-      box-shadow: 3px 3px 8px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    .feature-text h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .feature-text p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* Second phone on features section */
-    .features-phone {
-      position: relative;
-    }
-
-    .features-phone-frame {
-      width: 240px;
-      height: 480px;
-      background: var(--surface);
-      border-radius: 38px;
-      border: 2px solid var(--border);
-      box-shadow:
-        0 0 0 1px rgba(201,169,110,0.2),
-        0 30px 60px rgba(0,0,0,0.6),
-        0 0 50px rgba(201,169,110,0.1),
-        inset 0 0 0 1px var(--shadow-light);
+      box-shadow: 8px 8px 24px var(--shadow-dark), -4px -4px 16px var(--shadow-light);
       overflow: hidden;
-      margin: 0 auto;
+      display: flex; flex-direction: column;
     }
 
-    .fscreen {
-      width: 100%;
-      height: 100%;
-      background: var(--bg);
-      padding: 44px 14px 14px;
+    .nf-card-top {
+      padding: 32px 28px 0;
     }
 
-    .fscreen-header {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
+    .nf-accent-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 12px;
+      margin-bottom: 20px;
     }
 
-    .fscreen-calc {
-      background: var(--surface);
-      border-radius: 16px;
-      padding: 16px;
+    .nf-card-title { font-size: 24px; font-weight: 900; letter-spacing: -0.8px; color: var(--text); margin-bottom: 10px; }
+    .nf-card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+
+    .nf-bullets { display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
+    .nf-bullet { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text); font-weight: 500; }
+    .nf-bullet-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* Dashboard mockup */
+    .nf-mockup {
+      margin: 0 28px;
+      background: var(--surface2);
+      border-radius: 18px 18px 0 0;
       border: 1px solid var(--border);
-      box-shadow: 4px 4px 10px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
-      margin-bottom: 12px;
+      border-bottom: none;
+      padding: 14px;
+      flex: 1;
     }
 
-    .fscreen-calc-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text);
+    .nf-mockup-header {
+      font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nf-pin-card {
+      display: flex; align-items: center; gap: 9px;
+      background: var(--surface); border-radius: 12px; padding: 10px 12px;
+      border: 1px solid var(--border);
+      box-shadow: 3px 3px 8px var(--shadow-dark);
+      margin-bottom: 8px;
+    }
+
+    .nf-pin-icon {
+      width: 28px; height: 28px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0;
+    }
+
+    .nf-pin-label { flex: 1; font-size: 10px; font-weight: 600; color: var(--text); }
+    .nf-pin-sub { font-size: 9px; color: var(--muted); margin-top: 1px; }
+    .nf-pin-value { font-size: 12px; font-weight: 800; }
+
+    /* Tracks mockup */
+    .nf-track-card {
+      background: var(--surface); border-radius: 14px; padding: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 3px 3px 8px var(--shadow-dark);
       margin-bottom: 10px;
     }
 
-    .fscreen-input {
-      background: #09090E;
-      border-radius: 8px;
-      padding: 8px 10px;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      border: 1px solid var(--faint);
+    .nf-track-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .nf-track-emoji { font-size: 18px; }
+    .nf-track-name { flex: 1; font-size: 11px; font-weight: 700; color: var(--text); }
+    .nf-track-streak {
+      font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px;
     }
 
-    .fscreen-result {
-      background: var(--gold-dim);
-      border: 1px solid rgba(201,169,110,0.3);
-      border-radius: 10px;
-      padding: 10px 12px;
-      text-align: center;
+    .nf-bars { display: flex; align-items: flex-end; gap: 3px; height: 36px; margin-bottom: 8px; }
+    .nf-bar { flex: 1; border-radius: 2px; }
+
+    .nf-track-stats { display: flex; justify-content: space-between; }
+    .nf-track-stat-label { font-size: 9px; color: var(--muted); }
+    .nf-track-stat-val { font-size: 11px; font-weight: 700; color: var(--text); margin-top: 1px; }
+
+    .nf-template-bubbles { display: flex; gap: 7px; margin-top: 10px; }
+    .nf-bubble {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
     }
 
-    .fscreen-result-val {
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--gold);
+    /* ── Features ─────────────────────────────────── */
+    .features-section { padding: 80px 24px; }
+
+    .features-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center; margin-top: 60px;
     }
 
-    .fscreen-result-label {
-      font-size: 9px;
-      color: var(--muted);
+    .features-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .feature-item { display: flex; align-items: flex-start; gap: 16px; }
+
+    .feature-icon {
+      width: 46px; height: 46px; border-radius: 13px;
+      background: var(--surface); border: 1px solid var(--border);
+      box-shadow: 3px 3px 8px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+      display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
     }
 
-    /* Floating accent cards */
-    .float-card {
-      position: absolute;
-      background: var(--surface);
-      border-radius: 16px;
+    .feature-text h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .feature-text p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    .features-phone { position: relative; }
+
+    .features-phone-frame {
+      width: 240px; height: 480px; background: var(--surface);
+      border-radius: 38px; border: 2px solid var(--border);
+      box-shadow: 0 0 0 1px rgba(201,169,110,0.2), 0 30px 60px rgba(0,0,0,0.6), 0 0 50px rgba(201,169,110,0.1), inset 0 0 0 1px var(--shadow-light);
+      overflow: hidden; margin: 0 auto;
+    }
+
+    .fscreen { width: 100%; height: 100%; background: var(--bg); padding: 44px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+    .fscreen-header { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Track card in features phone */
+    .fp-track-card {
+      background: var(--surface); border-radius: 16px; padding: 14px;
       border: 1px solid var(--border);
-      padding: 12px 16px;
+      box-shadow: 4px 4px 10px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+    }
+
+    .fp-track-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .fp-track-title { flex: 1; font-size: 12px; font-weight: 700; color: var(--text); }
+    .fp-streak { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 10px; background: rgba(39,174,96,0.18); color: var(--green); border: 1px solid rgba(39,174,96,0.35); }
+    .fp-hero-val { font-size: 26px; font-weight: 900; letter-spacing: -1px; color: var(--green); margin-bottom: 2px; }
+    .fp-hero-sub { font-size: 9px; color: var(--muted); margin-bottom: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; }
+
+    .fp-bars { display: flex; align-items: flex-end; gap: 3px; height: 40px; margin-bottom: 8px; }
+    .fp-bar { flex: 1; border-radius: 2px; }
+
+    .fp-date-row { display: flex; justify-content: space-between; font-size: 8px; color: var(--muted); margin-bottom: 10px; }
+
+    .fp-stats-row { display: flex; }
+    .fp-stat { flex: 1; text-align: center; }
+    .fp-stat-val { font-size: 11px; font-weight: 800; color: var(--text); }
+    .fp-stat-lbl { font-size: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 1px; }
+
+    .fp-log-row {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface2); border-radius: 10px; padding: 8px 10px;
+      border: 1px solid var(--border);
+    }
+    .fp-log-input { flex: 1; font-size: 11px; color: var(--muted); }
+    .fp-log-btn { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 8px; background: var(--green); color: #fff; }
+
+    .float-card {
+      position: absolute; background: var(--surface); border-radius: 16px;
+      border: 1px solid var(--border); padding: 12px 16px;
       box-shadow: 6px 6px 16px var(--shadow-dark), 0 0 20px rgba(201,169,110,0.1);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      animation: floatSlow 4s ease-in-out infinite;
-      white-space: nowrap;
+      font-size: 12px; font-weight: 600; color: var(--text);
+      display: flex; align-items: center; gap: 8px;
+      animation: floatSlow 4s ease-in-out infinite; white-space: nowrap;
     }
-
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
+    @keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     .float-card.card-1 { top: 60px; right: -30px; animation-delay: 0s; }
-    .float-card.card-2 { bottom: 120px; left: -30px; animation-delay: 1.5s; }
+    .float-card.card-2 { bottom: 100px; left: -30px; animation-delay: 1.5s; }
+    .float-dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    .float-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-    }
-
-    /* ── Testimonials / social proof ──────────────── */
-    .proof-section {
-      padding: 80px 24px;
-    }
-
-    .proof-row {
-      display: flex;
-      gap: 18px;
-      margin-top: 48px;
-      flex-wrap: wrap;
-    }
+    /* ── Reviews ──────────────────────────────────── */
+    .proof-section { padding: 80px 24px; }
+    .proof-row { display: flex; gap: 18px; margin-top: 48px; flex-wrap: wrap; }
 
     .proof-card {
-      flex: 1;
-      min-width: 260px;
-      background: var(--surface);
-      border-radius: 22px;
-      padding: 28px;
+      flex: 1; min-width: 260px; background: var(--surface); border-radius: 22px; padding: 28px;
       border: 1px solid var(--border);
       box-shadow: 6px 6px 16px var(--shadow-dark), -3px -3px 10px var(--shadow-light);
     }
 
-    .stars {
-      color: var(--gold);
-      font-size: 14px;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
+    .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
+    .proof-text { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 18px; }
 
-    .proof-text {
-      font-size: 14px;
-      color: var(--text);
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
+    .proof-author { display: flex; align-items: center; gap: 10px; }
+    .proof-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dim)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; color: #0D0D14; flex-shrink: 0; }
+    .proof-name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .proof-role { font-size: 11px; color: var(--muted); }
 
-    .proof-author {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .proof-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 13px;
-      color: #0D0D14;
-      flex-shrink: 0;
-    }
-
-    .proof-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .proof-role {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* ── Download CTA band ────────────────────────── */
-    .download-section {
-      padding: 80px 24px 60px;
-    }
+    /* ── Download CTA ─────────────────────────────── */
+    .download-section { padding: 80px 24px 60px; }
 
     .download-card {
-      background: var(--surface);
-      border-radius: 32px;
-      padding: 60px 48px;
+      background: var(--surface); border-radius: 32px; padding: 60px 48px;
       border: 1px solid var(--border);
-      box-shadow:
-        8px 8px 24px var(--shadow-dark),
-        -4px -4px 16px var(--shadow-light),
-        0 0 60px rgba(201,169,110,0.08);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 8px 8px 24px var(--shadow-dark), -4px -4px 16px var(--shadow-light), 0 0 60px rgba(201,169,110,0.08);
+      text-align: center; position: relative; overflow: hidden;
     }
 
     .download-card::before {
-      content: '';
-      position: absolute;
-      top: -60px; left: 50%;
-      transform: translateX(-50%);
+      content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
       width: 400px; height: 300px;
       background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 65%);
       pointer-events: none;
     }
 
-    .download-card h2 {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      margin-bottom: 14px;
-      background: linear-gradient(135deg, #EDE8DF 0%, #C9A96E 80%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .download-card h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 14px; background: linear-gradient(135deg, #EDE8DF 0%, #C9A96E 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .download-card p { font-size: 16px; color: var(--muted); margin-bottom: 36px; }
 
-    .download-card p {
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 36px;
-    }
-
-    .store-buttons {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .store-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
     .store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #111018;
-      color: var(--text);
-      text-decoration: none;
-      padding: 14px 24px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #111018; color: var(--text); text-decoration: none;
+      padding: 14px 24px; border-radius: 14px; border: 1px solid var(--border);
       box-shadow: 4px 4px 12px var(--shadow-dark), -2px -2px 8px var(--shadow-light);
       transition: transform .18s, border-color .18s, box-shadow .18s;
     }
-
-    .store-btn:hover {
-      transform: translateY(-3px);
-      border-color: var(--gold);
-      box-shadow: 4px 4px 18px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 20px var(--gold-dim);
-    }
-
-    .store-btn-icon {
-      font-size: 26px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .store-btn-text {
-      text-align: left;
-    }
-
-    .store-btn-sub {
-      font-size: 10px;
-      color: var(--muted);
-      display: block;
-    }
-
-    .store-btn-name {
-      font-size: 15px;
-      font-weight: 700;
-      display: block;
-    }
+    .store-btn:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 4px 4px 18px var(--shadow-dark), -2px -2px 8px var(--shadow-light), 0 0 20px var(--gold-dim); }
+    .store-btn-icon { font-size: 26px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .store-btn-text { text-align: left; }
+    .store-btn-sub { font-size: 10px; color: var(--muted); display: block; }
+    .store-btn-name { font-size: 15px; font-weight: 700; display: block; }
 
     /* ── Footer ───────────────────────────────────── */
-    footer {
-      /* border-top: 1px solid var(--border); */
-      padding: 40px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    footer { padding: 40px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; max-width: 1100px; margin: 0 auto; }
+    .footer-copy { font-size: 12px; color: var(--faint); width: 100%; text-align: center; padding-top: 16px; border-top: 1px solid var(--border); margin-top: 8px; }
 
-    .footer-brand {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .footer-brand span { color: var(--gold); }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      text-decoration: none;
-      font-size: 13px;
-      color: var(--muted);
-      transition: color .2s;
-    }
-
-    .footer-links a:hover { color: var(--gold); }
-
-    .footer-copy {
-      font-size: 12px;
-      color: var(--faint);
-      width: 100%;
-      text-align: center;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      margin-top: 8px;
-    }
-
-    /* ── Divider ornament ─────────────────────────── */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      margin: 0 auto;
-    }
-
-    /* ── Responsive ───────────────────────────────── */
-    @media (max-width: 768px) {
-      nav .nav-links { display: none; }
-
-      .features-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .features-phone { order: -1; }
-
-      .float-card.card-1 { right: 10px; }
-      .float-card.card-2 { left: 10px; }
-
-      .download-card { padding: 40px 24px; }
-
-      footer { flex-direction: column; align-items: flex-start; }
-
-      .hero-stats { gap: 20px; }
-    }
-
-    @media (max-width: 480px) {
-      .categories-grid { grid-template-columns: 1fr 1fr; }
-      .cat-desc { display: none; }
-    }
+    /* ── Divider ──────────────────────────────────── */
+    .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 auto; }
 
     /* ── Scroll-in animations ─────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
@@ -976,6 +462,25 @@
     .reveal-delay-6 { transition-delay: 0.6s; }
     .reveal-delay-7 { transition-delay: 0.7s; }
     .reveal-delay-8 { transition-delay: 0.8s; }
+
+    /* ── Responsive ───────────────────────────────── */
+    @media (max-width: 900px) {
+      .new-features-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav .nav-links { display: none; }
+      .features-layout { grid-template-columns: 1fr; gap: 40px; }
+      .features-phone { order: -1; }
+      .float-card.card-1 { right: 10px; }
+      .float-card.card-2 { left: 10px; }
+      .download-card { padding: 40px 24px; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .hero-stats { gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .categories-grid { grid-template-columns: 1fr 1fr; }
+      .cat-desc { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -988,6 +493,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#categories">Categories</a></li>
+    <li><a href="#new-features">Dashboard &amp; Tracks</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#download" class="nav-cta">Download</a></li>
@@ -1004,7 +510,7 @@
   <h1>Smart Calculators<br/>for Real Life</h1>
 
   <p class="hero-tagline">
-    100+ calculators across finance, health, fitness, travel, vehicle, home, math, fashion and more. <br><br> All in one beautifully crafted app.
+    106+ calculators across 12 categories. A personal dashboard, habit tracking with streaks and trends, and a daily insight to keep you sharp — all in one beautifully crafted app.
   </p>
 
   <div class="hero-ctas">
@@ -1013,66 +519,28 @@
       App Store
     </a>
     <a href="https://play.google.com/store/apps/details?id=com.fulminetech.thecalculatorapp" class="btn-secondary">
-      <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48"> <path fill="#4db6ac" d="M7.705,4.043C7.292,4.15,7,4.507,7,5.121c0,1.802,0,18.795,0,18.795S7,42.28,7,43.091c0,0.446,0.197,0.745,0.5,0.856l20.181-20.064L7.705,4.043z"></path><path fill="#dce775" d="M33.237,18.36l-8.307-4.796c0,0-15.245-8.803-16.141-9.32C8.401,4.02,8.019,3.961,7.705,4.043l19.977,19.84L33.237,18.36z"></path><path fill="#d32f2f" d="M8.417,43.802c0.532-0.308,15.284-8.825,24.865-14.357l-5.601-5.562L7.5,43.947C7.748,44.038,8.066,44.004,8.417,43.802z"></path><path fill="#fbc02d" d="M41.398,23.071c-0.796-0.429-8.1-4.676-8.1-4.676l-0.061-0.035l-5.556,5.523l5.601,5.562c4.432-2.559,7.761-4.48,8.059-4.653C42.285,24.248,42.194,23.5,41.398,23.071z"></path> </svg>
+      <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#4db6ac" d="M7.705,4.043C7.292,4.15,7,4.507,7,5.121c0,1.802,0,18.795,0,18.795S7,42.28,7,43.091c0,0.446,0.197,0.745,0.5,0.856l20.181-20.064L7.705,4.043z"/><path fill="#dce775" d="M33.237,18.36l-8.307-4.796c0,0-15.245-8.803-16.141-9.32C8.401,4.02,8.019,3.961,7.705,4.043l19.977,19.84L33.237,18.36z"/><path fill="#d32f2f" d="M8.417,43.802c0.532-0.308,15.284-8.825,24.865-14.357l-5.601-5.562L7.5,43.947C7.748,44.038,8.066,44.004,8.417,43.802z"/><path fill="#fbc02d" d="M41.398,23.071c-0.796-0.429-8.1-4.676-8.1-4.676l-0.061-0.035l-5.556,5.523l5.601,5.562c4.432-2.559,7.761-4.48,8.059-4.653C42.285,24.248,42.194,23.5,41.398,23.071z"/></svg>
       Google Play
     </a>
   </div>
 
-  <!-- Phone mockup -->
-  <!-- <div class="phone-mockup">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="screen-hero-anim"><i class="fa-solid fa-calculator" style="font-size:30px;color:var(--gold)"></i></div>
-        <div class="screen-title">Calculator &amp; Beyond</div>
-        <div class="screen-sub">Smart calculators for real-world decisions!</div>
-        <div class="screen-grid">
-          <div class="screen-card">
-            <div class="screen-card-icon"><i class="fa-solid fa-line-chart" style="color:#C9A96E"></i></div>
-            <span class="screen-card-label">Finance</span>
-            <div class="screen-card-badge">18 calcs</div>
-          </div>
-          <div class="screen-card">
-            <div class="screen-card-icon"><i class="fa-solid fa-heartbeat" style="color:#34C97B"></i></div>
-            <span class="screen-card-label">Health</span>
-            <div class="screen-card-badge">5 calcs</div>
-          </div>
-          <div class="screen-card">
-            <div class="screen-card-icon"><i class="fa-solid fa-dumbbell" style="color:#FF6B35"></i></div>
-            <span class="screen-card-label">Fitness</span>
-            <div class="screen-card-badge">6 calcs</div>
-          </div>
-          <div class="screen-card">
-            <div class="screen-card-icon"><i class="fa-solid fa-plane" style="color:#00BCD4"></i></div>
-            <span class="screen-card-label">Travel</span>
-            <div class="screen-card-badge">8 calcs</div>
-          </div>
-        </div>
-        <div class="screen-tabs">
-          <div class="screen-tab active"><i class="fa-solid fa-house" style="font-size:12px"></i></div>
-          <div class="screen-tab"><i class="fa-solid fa-calculator" style="font-size:12px"></i></div>
-          <div class="screen-tab"><i class="fa-solid fa-bookmark" style="font-size:12px"></i></div>
-          <div class="screen-tab"><i class="fa-solid fa-gear" style="font-size:12px"></i></div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-number">100+</div>
+      <div class="stat-number">106+</div>
       <div class="stat-label">Calculators</div>
     </div>
     <div class="stat">
       <div class="stat-number">12</div>
       <div class="stat-label">Categories</div>
     </div>
-    <!-- <div class="stat">
-      <div class="stat-number">0</div>
-      <div class="stat-label">Ads · Free</div>
-    </div> -->
     <div class="stat">
-      <div class="stat-number" style="color:var(--gold);letter-spacing:2px"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      <div class="stat-number">10</div>
+      <div class="stat-label">Track Templates</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" style="color:var(--gold);letter-spacing:2px">
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      </div>
       <div class="stat-label">Rated</div>
     </div>
   </div>
@@ -1164,6 +632,121 @@
 
 <div class="divider"></div>
 
+<!-- ── Dashboard & Tracks ─────────────────────────────── -->
+<section id="new-features" class="new-features-section">
+  <div class="section-label">New in v1.1</div>
+  <h2 class="section-title reveal">More than a calculator.<br/>Your personal command centre.</h2>
+  <p class="section-desc reveal reveal-delay-1">Pin your most-used calculators to a live dashboard. Set goals, log values daily, and watch your progress unfold with streaks, charts and trend insights.</p>
+
+  <div class="new-features-grid">
+
+    <!-- Dashboard card -->
+    <div class="nf-card reveal reveal-delay-2">
+      <div class="nf-card-top">
+        <div class="nf-accent-tag" style="background:rgba(155,89,182,0.15);color:#9B59B6;border:1px solid rgba(155,89,182,0.3)">
+          <i class="fa-solid fa-thumbtack" style="font-size:10px"></i> Dashboard
+        </div>
+        <div class="nf-card-title">Your Personal<br/>Dashboard</div>
+        <div class="nf-card-desc">Pin any calculator and see your latest saved result the moment you open the app — no reopening, no digging.</div>
+        <div class="nf-bullets">
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#9B59B6"></div>Pin any calculator from any category</div>
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#9B59B6"></div>Instant latest-result preview on home</div>
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#9B59B6"></div>Reorder cards to match your priorities</div>
+        </div>
+      </div>
+      <div class="nf-mockup">
+        <div class="nf-mockup-header">
+          <span>Pinned Calculators</span>
+          <i class="fa-solid fa-thumbtack" style="color:#9B59B6;font-size:9px"></i>
+        </div>
+        <div class="nf-pin-card">
+          <div class="nf-pin-icon" style="background:rgba(201,169,110,0.18)"><i class="fa-solid fa-line-chart" style="color:#C9A96E;font-size:11px"></i></div>
+          <div>
+            <div class="nf-pin-label">Compound Interest</div>
+            <div class="nf-pin-sub">2d ago</div>
+          </div>
+          <div class="nf-pin-value" style="color:#C9A96E">$48.3K</div>
+        </div>
+        <div class="nf-pin-card">
+          <div class="nf-pin-icon" style="background:rgba(52,201,123,0.18)"><i class="fa-solid fa-heart-pulse" style="color:#34C97B;font-size:11px"></i></div>
+          <div>
+            <div class="nf-pin-label">BMI Calculator</div>
+            <div class="nf-pin-sub">Today</div>
+          </div>
+          <div class="nf-pin-value" style="color:#34C97B">24.1</div>
+        </div>
+        <div class="nf-pin-card">
+          <div class="nf-pin-icon" style="background:rgba(0,188,212,0.18)"><i class="fa-solid fa-car" style="color:#00BCD4;font-size:11px"></i></div>
+          <div>
+            <div class="nf-pin-label">Fuel Cost</div>
+            <div class="nf-pin-sub">5d ago</div>
+          </div>
+          <div class="nf-pin-value" style="color:#00BCD4">$62.40</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tracks card -->
+    <div class="nf-card reveal reveal-delay-3">
+      <div class="nf-card-top">
+        <div class="nf-accent-tag" style="background:rgba(39,174,96,0.15);color:#27AE60;border:1px solid rgba(39,174,96,0.3)">
+          <i class="fa-solid fa-chart-line" style="font-size:10px"></i> Tracks
+        </div>
+        <div class="nf-card-title">Build Habits,<br/>Track Progress</div>
+        <div class="nf-card-desc">Log daily values, watch streaks grow, and spot trends — for any goal you set. 10 ready-made templates to get you started instantly.</div>
+        <div class="nf-bullets">
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#27AE60"></div>🔥 Streaks — consecutive days of logging</div>
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#27AE60"></div>📈 7-day trend charts with min / max / avg</div>
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#27AE60"></div>⚡ 10 templates: fitness, finance, weight & more</div>
+        </div>
+      </div>
+      <div class="nf-mockup">
+        <div class="nf-mockup-header">
+          <span>Fitness Track</span>
+          <span style="color:#27AE60;font-size:10px;font-weight:700">🔥 7d</span>
+        </div>
+        <div class="nf-track-card">
+          <div class="nf-track-header">
+            <span class="nf-track-emoji">🏃</span>
+            <div class="nf-track-name">Weight (kg)</div>
+            <span class="nf-track-streak" style="background:rgba(39,174,96,0.18);color:#27AE60;border:1px solid rgba(39,174,96,0.35)">🔥 7d</span>
+          </div>
+          <div style="font-size:22px;font-weight:900;color:#27AE60;letter-spacing:-1px;margin-bottom:2px">82.4</div>
+          <div style="font-size:9px;color:var(--muted);margin-bottom:8px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase">Latest · kg</div>
+          <div class="nf-bars">
+            <div class="nf-bar" style="height:18px;background:#27AE60;opacity:0.2"></div>
+            <div class="nf-bar" style="height:24px;background:#27AE60;opacity:0.35"></div>
+            <div class="nf-bar" style="height:20px;background:#27AE60;opacity:0.5"></div>
+            <div class="nf-bar" style="height:30px;background:#27AE60;opacity:0.6"></div>
+            <div class="nf-bar" style="height:26px;background:#27AE60;opacity:0.72"></div>
+            <div class="nf-bar" style="height:36px;background:#27AE60;opacity:0.86"></div>
+            <div class="nf-bar" style="height:33px;background:#27AE60;opacity:1"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--muted);margin-bottom:8px">
+            <span>Apr 25</span><span>Today</span>
+          </div>
+          <div style="display:flex;border-top:1px solid var(--border);padding-top:8px">
+            <div style="flex:1;text-align:center"><div style="font-size:11px;font-weight:800;color:var(--text)">83.1</div><div style="font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:0.4px">Avg</div></div>
+            <div style="flex:1;text-align:center;border-left:1px solid var(--border)"><div style="font-size:11px;font-weight:800;color:#4A90D9">81.8</div><div style="font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:0.4px">Min</div></div>
+            <div style="flex:1;text-align:center;border-left:1px solid var(--border)"><div style="font-size:11px;font-weight:800;color:#FF6B35">84.2</div><div style="font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:0.4px">Max</div></div>
+            <div style="flex:1;text-align:center;border-left:1px solid var(--border)"><div style="font-size:11px;font-weight:800;color:var(--text)">7</div><div style="font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:0.4px">Days</div></div>
+          </div>
+        </div>
+        <div class="nf-template-bubbles">
+          <div class="nf-bubble">🏃</div>
+          <div class="nf-bubble">💰</div>
+          <div class="nf-bubble">🚗</div>
+          <div class="nf-bubble">🏠</div>
+          <div class="nf-bubble">✈️</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ── Features ──────────────────────────────────────── -->
 <section id="features">
   <div class="section-label">Why you'll love it</div>
@@ -1182,7 +765,7 @@
         <div class="feature-icon"><i class="fa-solid fa-bookmark" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Save &amp; Bookmark Results</h3>
-          <p>Pin any calculation result for later. Never lose an important number again.</p>
+          <p>Pin any calculation result for later. Every result stays on your device — private and instant.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-3">
@@ -1203,7 +786,7 @@
         <div class="feature-icon"><i class="fa-solid fa-calculator" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Built-in Standard Calculator</h3>
-          <p>A full standard &amp; scientific calculator is always one tap away from the home screen.</p>
+          <p>A full standard, scientific and currency calculator — with history — always one tap away.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-6">
@@ -1215,38 +798,53 @@
       </div>
     </div>
 
+    <!-- Features phone — Tracks screen -->
     <div class="features-phone reveal reveal-delay-2">
-      <!-- Floating context cards -->
       <div class="float-card card-1">
-        <span class="float-dot" style="background:#34C97B"></span>
-        Result saved ✓
+        <span class="float-dot" style="background:#27AE60"></span>
+        🔥 7-day streak!
       </div>
       <div class="float-card card-2">
         <span class="float-dot" style="background:#C9A96E"></span>
-        <i class="fa-solid fa-star" style="color:var(--gold)"></i> Added to Favourites
+        <i class="fa-solid fa-star" style="color:var(--gold)"></i> Result saved
       </div>
 
       <div class="features-phone-frame">
         <div class="fscreen">
-          <div class="fscreen-header">Finance › Compound Interest</div>
-          <div class="fscreen-calc">
-            <div class="fscreen-calc-title">Compound Interest Calculator</div>
-            <div class="fscreen-input">Principal: $10,000</div>
-            <div class="fscreen-input">Rate: 7% / yr</div>
-            <div class="fscreen-input">Period: 20 years</div>
-            <div class="fscreen-result">
-              <div class="fscreen-result-val">$38,696.84</div>
-              <div class="fscreen-result-label">Future Value</div>
+          <div class="fscreen-header">Tracks › Fitness Track</div>
+
+          <div class="fp-track-card">
+            <div class="fp-track-row">
+              <span style="font-size:16px">🏃</span>
+              <div class="fp-track-title">Weight (kg)</div>
+              <span class="fp-streak">🔥 7d</span>
+            </div>
+
+            <div class="fp-hero-val">82.4</div>
+            <div class="fp-hero-sub">Latest · kg</div>
+
+            <div class="fp-bars">
+              <div class="fp-bar" style="height:16px;background:#27AE60;opacity:0.15;border-radius:2px"></div>
+              <div class="fp-bar" style="height:22px;background:#27AE60;opacity:0.3;border-radius:2px"></div>
+              <div class="fp-bar" style="height:18px;background:#27AE60;opacity:0.45;border-radius:2px"></div>
+              <div class="fp-bar" style="height:28px;background:#27AE60;opacity:0.58;border-radius:2px"></div>
+              <div class="fp-bar" style="height:24px;background:#27AE60;opacity:0.72;border-radius:2px"></div>
+              <div class="fp-bar" style="height:38px;background:#27AE60;opacity:0.86;border-radius:2px"></div>
+              <div class="fp-bar" style="height:33px;background:#27AE60;opacity:1;border-radius:3px"></div>
+            </div>
+            <div class="fp-date-row"><span>Apr 25</span><span>Today</span></div>
+
+            <div class="fp-stats-row" style="border-top:1px solid var(--border);padding-top:6px">
+              <div class="fp-stat"><div class="fp-stat-val">83.1</div><div class="fp-stat-lbl">Avg</div></div>
+              <div class="fp-stat" style="border-left:1px solid var(--border)"><div class="fp-stat-val" style="color:#4A90D9">81.8</div><div class="fp-stat-lbl">Min</div></div>
+              <div class="fp-stat" style="border-left:1px solid var(--border)"><div class="fp-stat-val" style="color:#FF6B35">84.2</div><div class="fp-stat-lbl">Max</div></div>
+              <div class="fp-stat" style="border-left:1px solid var(--border)"><div class="fp-stat-val">7</div><div class="fp-stat-lbl">Days</div></div>
             </div>
           </div>
-          <div class="fscreen-calc" style="padding:12px">
-            <div style="font-size:10px; color:var(--muted); margin-bottom:8px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;">Growth Breakdown</div>
-            <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text); margin-bottom:6px;">
-              <span>Principal</span><span style="color:var(--gold)">$10,000</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text);">
-              <span>Interest Earned</span><span style="color:#34C97B">$28,696.84</span>
-            </div>
+
+          <div class="fp-log-row">
+            <div class="fp-log-input">Enter weight…</div>
+            <div class="fp-log-btn">Update</div>
           </div>
         </div>
       </div>
@@ -1264,7 +862,7 @@
   <div class="proof-row">
     <div class="proof-card reveal reveal-delay-1">
       <div class="stars">★★★★★</div>
-      <p class="proof-text">"Finally an app that has every calculator I need in one place. The compound interest and mortgage tools are spot on. Clean, fast, no ads."</p>
+      <p class="proof-text">"Finally an app that has every calculator I need in one place. The compound interest and mortgage tools are spot on. The dashboard is a game-changer — I can see my latest results the moment I open the app."</p>
       <div class="proof-author">
         <div class="proof-avatar">AK</div>
         <div>
@@ -1275,7 +873,7 @@
     </div>
     <div class="proof-card reveal reveal-delay-2">
       <div class="stars">★★★★★</div>
-      <p class="proof-text">"The fitness calculators are incredibly accurate. I use the macro split and heart rate zone tool every single day. The dark theme is stunning."</p>
+      <p class="proof-text">"The Tracks feature is incredible. I log my weight every morning, and the streak counter and 7-day chart keep me motivated. The fitness calculators are incredibly accurate too — I use them daily."</p>
       <div class="proof-author">
         <div class="proof-avatar">SM</div>
         <div>
@@ -1286,7 +884,7 @@
     </div>
     <div class="proof-card reveal reveal-delay-3">
       <div class="stars">★★★★★</div>
-      <p class="proof-text">"I'm an EE student and the electronics section is a lifesaver — Ohm's law, voltage divider, RC circuit all in one app. Best purchase I've made."</p>
+      <p class="proof-text">"I'm an EE student and the electronics section is a lifesaver — Ohm's law, voltage divider, RC circuit all in one app. Clean dark theme, no ads, works offline. Best app I've downloaded this year."</p>
       <div class="proof-author">
         <div class="proof-avatar">TR</div>
         <div>
@@ -1305,12 +903,12 @@
   <div class="download-card reveal">
     <div class="section-label" style="text-align:center">Get the app</div>
     <h2>Your calculator.<br/>Everywhere you go.</h2>
-    <p>Download Calculator &amp; Beyond free today. Available on iPhone and Android.</p>
+    <p>Download Calculator &amp; Beyond free today. 106+ calculators, Dashboard and Tracks — available on iPhone and Android.</p>
 
     <div class="store-buttons">
       <a href="https://apps.apple.com/us/app/calculator-beyond/id6761143652" class="store-btn">
         <span class="store-btn-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         </span>
         <span class="store-btn-text">
           <span class="store-btn-sub">Download on the</span>
@@ -1319,7 +917,7 @@
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.fulminetech.thecalculatorapp" class="store-btn">
         <span class="store-btn-icon">
-          <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48"> <path fill="#4db6ac" d="M7.705,4.043C7.292,4.15,7,4.507,7,5.121c0,1.802,0,18.795,0,18.795S7,42.28,7,43.091c0,0.446,0.197,0.745,0.5,0.856l20.181-20.064L7.705,4.043z"></path><path fill="#dce775" d="M33.237,18.36l-8.307-4.796c0,0-15.245-8.803-16.141-9.32C8.401,4.02,8.019,3.961,7.705,4.043l19.977,19.84L33.237,18.36z"></path><path fill="#d32f2f" d="M8.417,43.802c0.532-0.308,15.284-8.825,24.865-14.357l-5.601-5.562L7.5,43.947C7.748,44.038,8.066,44.004,8.417,43.802z"></path><path fill="#fbc02d" d="M41.398,23.071c-0.796-0.429-8.1-4.676-8.1-4.676l-0.061-0.035l-5.556,5.523l5.601,5.562c4.432-2.559,7.761-4.48,8.059-4.653C42.285,24.248,42.194,23.5,41.398,23.071z"></path> </svg>
+          <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#4db6ac" d="M7.705,4.043C7.292,4.15,7,4.507,7,5.121c0,1.802,0,18.795,0,18.795S7,42.28,7,43.091c0,0.446,0.197,0.745,0.5,0.856l20.181-20.064L7.705,4.043z"/><path fill="#dce775" d="M33.237,18.36l-8.307-4.796c0,0-15.245-8.803-16.141-9.32C8.401,4.02,8.019,3.961,7.705,4.043l19.977,19.84L33.237,18.36z"/><path fill="#d32f2f" d="M8.417,43.802c0.532-0.308,15.284-8.825,24.865-14.357l-5.601-5.562L7.5,43.947C7.748,44.038,8.066,44.004,8.417,43.802z"/><path fill="#fbc02d" d="M41.398,23.071c-0.796-0.429-8.1-4.676-8.1-4.676l-0.061-0.035l-5.556,5.523l5.601,5.562c4.432-2.559,7.761-4.48,8.059-4.653C42.285,24.248,42.194,23.5,41.398,23.071z"/></svg>
         </span>
         <span class="store-btn-text">
           <span class="store-btn-sub">Get it on</span>
@@ -1332,29 +930,16 @@
 
 <!-- ── Footer ────────────────────────────────────────── -->
 <footer>
-  <!-- <div class="footer-brand">Calculator <span>&amp; Beyond</span></div> -->
-  <!-- <ul class="footer-links">
-    <li><a href="#">Privacy Policy</a></li>
-    <li><a href="#">Disclaimer</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul> -->
   <div class="footer-copy">
     © 2026 Calculator &amp; Beyond. All rights reserved.
   </div>
 </footer>
 
 <script>
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
-d
