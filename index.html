@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calculator & Beyond: Smart Calculators for Real-World Decisions</title>
-  <meta name="description" content="106+ smart calculators for finance, health, fitness, travel, vehicle, electronics and more. Dashboard, habit tracking, streaks and daily insights. Download free." />
+  <meta name="description" content="106+ smart calculators for finance, health, fitness, travel, vehicle, electronics and more. Dashboard, habit tracking, streaks and daily insights. Available in 8 languages. Download free." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -218,7 +218,7 @@
 
     .new-features-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 24px;
       margin-top: 56px;
     }
@@ -312,6 +312,32 @@
       background: var(--surface); border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center; font-size: 14px;
     }
+
+    /* Language mockup */
+    .nf-lang-row {
+      display: flex; align-items: center; gap: 9px;
+      padding: 8px 10px; border-radius: 10px;
+      border: 1px solid transparent; margin-bottom: 5px;
+      font-size: 10px; font-weight: 600; color: var(--text);
+      transition: background .15s;
+    }
+    .nf-lang-row.active {
+      background: rgba(26,188,156,0.12);
+      border-color: rgba(26,188,156,0.3);
+      color: #1ABC9C;
+    }
+    .nf-lang-flag { font-size: 14px; flex-shrink: 0; }
+    .nf-lang-native { font-size: 9px; color: var(--muted); margin-left: auto; }
+    .nf-lang-check { color: #1ABC9C; font-size: 9px; }
+    .nf-lang-flags-row {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+    }
+    .nf-flag-chip {
+      padding: 4px 8px; border-radius: 10px;
+      background: var(--surface2); border: 1px solid var(--border);
+      font-size: 12px; display: flex; align-items: center; gap: 4px;
+    }
+    .nf-flag-chip-text { font-size: 9px; color: var(--muted); font-weight: 600; }
 
     /* ── Features ─────────────────────────────────── */
     .features-section { padding: 80px 24px; }
@@ -464,7 +490,10 @@
     .reveal-delay-8 { transition-delay: 0.8s; }
 
     /* ── Responsive ───────────────────────────────── */
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
+      .new-features-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
       .new-features-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
@@ -510,7 +539,7 @@
   <h1>Smart Calculators<br/>for Real Life</h1>
 
   <p class="hero-tagline">
-    106+ calculators across 12 categories. A personal dashboard, habit tracking with streaks and trends, and a daily insight to keep you sharp — all in one beautifully crafted app.
+    106+ calculators across 12 categories. A personal dashboard, habit tracking, daily insights, and now available in 8 languages. All in one beautifully crafted app.
   </p>
 
   <div class="hero-ctas">
@@ -534,8 +563,8 @@
       <div class="stat-label">Categories</div>
     </div>
     <div class="stat">
-      <div class="stat-number">10</div>
-      <div class="stat-label">Track Templates</div>
+      <div class="stat-number">8</div>
+      <div class="stat-label">Languages</div>
     </div>
     <div class="stat">
       <div class="stat-number" style="color:var(--gold);letter-spacing:2px">
@@ -552,7 +581,7 @@
 <section id="categories" class="categories-section">
   <div class="section-label">What's inside</div>
   <h2 class="section-title reveal">12 Categories.<br/>Every calculation you need.</h2>
-  <p class="section-desc reveal reveal-delay-1">From compound interest to calorie burn, from home renovation to fashion — each category is packed with precision tools built for real decisions.</p>
+  <p class="section-desc reveal reveal-delay-1">From compound interest to calorie burn, from home renovation to fashion, each category is packed with precision tools built for real decisions.</p>
 
   <div class="categories-grid">
     <div class="cat-card reveal reveal-delay-1" style="--accent-color:#1ABC9C; --accent-glow:rgba(26,188,156,0.15)">
@@ -634,9 +663,9 @@
 
 <!-- ── Dashboard & Tracks ─────────────────────────────── -->
 <section id="new-features" class="new-features-section">
-  <div class="section-label">New in v1.1</div>
+  <div class="section-label">New in v1.2</div>
   <h2 class="section-title reveal">More than a calculator.<br/>Your personal command centre.</h2>
-  <p class="section-desc reveal reveal-delay-1">Pin your most-used calculators to a live dashboard. Set goals, log values daily, and watch your progress unfold with streaks, charts and trend insights.</p>
+  <p class="section-desc reveal reveal-delay-1">Pin your most-used calculators to a live dashboard. Set goals, log values daily, and watch your progress unfold. Now in 8 languages.</p>
 
   <div class="new-features-grid">
 
@@ -647,7 +676,7 @@
           <i class="fa-solid fa-thumbtack" style="font-size:10px"></i> Dashboard
         </div>
         <div class="nf-card-title">Your Personal<br/>Dashboard</div>
-        <div class="nf-card-desc">Pin any calculator and see your latest saved result the moment you open the app — no reopening, no digging.</div>
+        <div class="nf-card-desc">Pin any calculator and see your latest saved result the moment you open the app. No reopening, no digging.</div>
         <div class="nf-bullets">
           <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#9B59B6"></div>Pin any calculator from any category</div>
           <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#9B59B6"></div>Instant latest-result preview on home</div>
@@ -683,6 +712,30 @@
           </div>
           <div class="nf-pin-value" style="color:#00BCD4">$62.40</div>
         </div>
+        <div class="nf-pin-card">
+          <div class="nf-pin-icon" style="background:rgba(231,76,60,0.18)"><i class="fa-solid fa-house" style="color:#E74C3C;font-size:11px"></i></div>
+          <div>
+            <div class="nf-pin-label">Mortgage</div>
+            <div class="nf-pin-sub">1d ago</div>
+          </div>
+          <div class="nf-pin-value" style="color:#E74C3C">$1,240</div>
+        </div>
+        <div class="nf-pin-card">
+          <div class="nf-pin-icon" style="background:rgba(255,107,53,0.18)"><i class="fa-solid fa-fire" style="color:#FF6B35;font-size:11px"></i></div>
+          <div>
+            <div class="nf-pin-label">Calorie Burn</div>
+            <div class="nf-pin-sub">Today</div>
+          </div>
+          <div class="nf-pin-value" style="color:#FF6B35">487 kcal</div>
+        </div>
+        <div class="nf-pin-card">
+          <div class="nf-pin-icon" style="background:rgba(155,89,182,0.18)"><i class="fa-solid fa-plane" style="color:#9B59B6;font-size:11px"></i></div>
+          <div>
+            <div class="nf-pin-label">Trip Budget</div>
+            <div class="nf-pin-sub">3d ago</div>
+          </div>
+          <div class="nf-pin-value" style="color:#9B59B6">$2,150</div>
+        </div>
       </div>
     </div>
 
@@ -693,9 +746,9 @@
           <i class="fa-solid fa-chart-line" style="font-size:10px"></i> Tracks
         </div>
         <div class="nf-card-title">Build Habits,<br/>Track Progress</div>
-        <div class="nf-card-desc">Log daily values, watch streaks grow, and spot trends — for any goal you set. 10 ready-made templates to get you started instantly.</div>
+        <div class="nf-card-desc">Log daily values, watch streaks grow, and spot trends for any goal you set. 10 ready-made templates to get you started instantly.</div>
         <div class="nf-bullets">
-          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#27AE60"></div>🔥 Streaks — consecutive days of logging</div>
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#27AE60"></div>🔥 Streaks: consecutive days of logging</div>
           <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#27AE60"></div>📈 7-day trend charts with min / max / avg</div>
           <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#27AE60"></div>⚡ 10 templates: fitness, finance, weight & more</div>
         </div>
@@ -742,6 +795,69 @@
       </div>
     </div>
 
+    <!-- Multilanguage card -->
+    <div class="nf-card reveal reveal-delay-4">
+      <div class="nf-card-top">
+        <div class="nf-accent-tag" style="background:rgba(26,188,156,0.15);color:#1ABC9C;border:1px solid rgba(26,188,156,0.3)">
+          <i class="fa-solid fa-globe" style="font-size:10px"></i> Multilanguage
+        </div>
+        <div class="nf-card-title">Now in<br/>8 Languages</div>
+        <div class="nf-card-desc">Switch the entire app to your language instantly, no restart needed. Every screen, label, and category name adapts in real time.</div>
+        <div class="nf-bullets">
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#1ABC9C"></div>8 fully translated languages built in</div>
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#1ABC9C"></div>Instant switch, no restart required</div>
+          <div class="nf-bullet"><div class="nf-bullet-dot" style="background:#1ABC9C"></div>Auto-detects your device language on first launch</div>
+        </div>
+      </div>
+      <div class="nf-mockup">
+        <div class="nf-mockup-header">
+          <span>Select Language</span>
+          <i class="fa-solid fa-globe" style="color:#1ABC9C;font-size:9px"></i>
+        </div>
+        <div class="nf-lang-row active">
+          <span class="nf-lang-flag">🇺🇸</span>
+          <span>English</span>
+          <span class="nf-lang-native">English</span>
+          <i class="fa-solid fa-check nf-lang-check"></i>
+        </div>
+        <div class="nf-lang-row">
+          <span class="nf-lang-flag">🇪🇸</span>
+          <span>Spanish</span>
+          <span class="nf-lang-native">Español</span>
+        </div>
+        <div class="nf-lang-row">
+          <span class="nf-lang-flag">🇫🇷</span>
+          <span>French</span>
+          <span class="nf-lang-native">Français</span>
+        </div>
+        <div class="nf-lang-row">
+          <span class="nf-lang-flag">🇩🇪</span>
+          <span>German</span>
+          <span class="nf-lang-native">Deutsch</span>
+        </div>
+        <div class="nf-lang-row">
+          <span class="nf-lang-flag">🇵🇹</span>
+          <span>Portuguese</span>
+          <span class="nf-lang-native">Português</span>
+        </div>
+        <div class="nf-lang-row">
+          <span class="nf-lang-flag">🇮🇹</span>
+          <span>Italian</span>
+          <span class="nf-lang-native">Italiano</span>
+        </div>
+        <div class="nf-lang-row">
+          <span class="nf-lang-flag">🇷🇺</span>
+          <span>Russian</span>
+          <span class="nf-lang-native">Русский</span>
+        </div>
+        <div class="nf-lang-row">
+          <span class="nf-lang-flag">🇯🇵</span>
+          <span>Japanese</span>
+          <span class="nf-lang-native">日本語</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -765,7 +881,7 @@
         <div class="feature-icon"><i class="fa-solid fa-bookmark" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Save &amp; Bookmark Results</h3>
-          <p>Pin any calculation result for later. Every result stays on your device — private and instant.</p>
+          <p>Pin any calculation result for later. Every result stays on your device, private and instant.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-3">
@@ -786,10 +902,17 @@
         <div class="feature-icon"><i class="fa-solid fa-calculator" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Built-in Standard Calculator</h3>
-          <p>A full standard, scientific and currency calculator — with history — always one tap away.</p>
+          <p>A full standard, scientific and currency calculator with history, always one tap away.</p>
         </div>
       </div>
       <div class="feature-item reveal reveal-delay-6">
+        <div class="feature-icon"><i class="fa-solid fa-globe" style="color:var(--gold)"></i></div>
+        <div class="feature-text">
+          <h3>8 Languages, Instant Switch</h3>
+          <p>English, Spanish, French, German, Portuguese, Italian, Russian and Japanese. Switch instantly from Settings, no restart needed.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal reveal-delay-7">
         <div class="feature-icon"><i class="fa-solid fa-mobile-screen" style="color:var(--gold)"></i></div>
         <div class="feature-text">
           <h3>Works Offline, Always</h3>
@@ -862,7 +985,7 @@
   <div class="proof-row">
     <div class="proof-card reveal reveal-delay-1">
       <div class="stars">★★★★★</div>
-      <p class="proof-text">"Finally an app that has every calculator I need in one place. The compound interest and mortgage tools are spot on. The dashboard is a game-changer — I can see my latest results the moment I open the app."</p>
+      <p class="proof-text">"Finally an app that has every calculator I need in one place. The compound interest and mortgage tools are spot on. The dashboard is a game-changer, I can see my latest results the moment I open the app."</p>
       <div class="proof-author">
         <div class="proof-avatar">AK</div>
         <div>
@@ -873,7 +996,7 @@
     </div>
     <div class="proof-card reveal reveal-delay-2">
       <div class="stars">★★★★★</div>
-      <p class="proof-text">"The Tracks feature is incredible. I log my weight every morning, and the streak counter and 7-day chart keep me motivated. The fitness calculators are incredibly accurate too — I use them daily."</p>
+      <p class="proof-text">"The Tracks feature is incredible. I log my weight every morning, and the streak counter and 7-day chart keep me motivated. The fitness calculators are incredibly accurate too, I use them daily."</p>
       <div class="proof-author">
         <div class="proof-avatar">SM</div>
         <div>
@@ -884,7 +1007,7 @@
     </div>
     <div class="proof-card reveal reveal-delay-3">
       <div class="stars">★★★★★</div>
-      <p class="proof-text">"I'm an EE student and the electronics section is a lifesaver — Ohm's law, voltage divider, RC circuit all in one app. Clean dark theme, no ads, works offline. Best app I've downloaded this year."</p>
+      <p class="proof-text">"I'm an EE student and the electronics section is a lifesaver! Ohm's law, voltage divider, RC circuit all in one app. Clean dark theme, no ads, works offline. Best app I've downloaded this year."</p>
       <div class="proof-author">
         <div class="proof-avatar">TR</div>
         <div>
@@ -903,7 +1026,7 @@
   <div class="download-card reveal">
     <div class="section-label" style="text-align:center">Get the app</div>
     <h2>Your calculator.<br/>Everywhere you go.</h2>
-    <p>Download Calculator &amp; Beyond free today. 106+ calculators, Dashboard and Tracks — available on iPhone and Android.</p>
+    <p>Download Calculator &amp; Beyond free today. 106+ calculators, Dashboard, Tracks and 8 languages. Available on iPhone and Android.</p>
 
     <div class="store-buttons">
       <a href="https://apps.apple.com/us/app/calculator-beyond/id6761143652" class="store-btn">
